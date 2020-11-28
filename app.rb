@@ -7,6 +7,11 @@ require 'sinatra/activerecord'
 set :database, {adapter: "sqlite3", database: "barbershop.db"}
 
 class Client < ActiveRecord::Base
+	validates :name, presence: true
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :barber, presence: true
+	validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -26,32 +31,6 @@ end
 
 post '/visit' do
 	c = Client.new params[:client]
-=begin
-	@username = params[:username]
-	@phone = params[:phone]
-	@datetime = params[:datetime]
-	@barber = params[:barber]
-	@color = params[:color]
-
-	hh = {
-		:username => 'Enter correct name',
-		:phone => 'Enter correct phone',
-		:datetime => 'Enter correct date',
-		:time => 'Enter correct time'
-	}
-
-	@error = hh.select { |k,_| params[k] == '' }.values.join(", ")
-	if @error != ''
-		return erb :visit
-	end
-
-	c = Client.new
-	c.name = @username
-	c.phone = @phone
-	c.datestamp = @datetime
-	c.barber = @barber
-	c.color = @color
-=end
 	c.save
 
 	erb "<h2>Thank you, we are waiting for you!</h2>"
