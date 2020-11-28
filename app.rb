@@ -43,18 +43,13 @@ post '/visit' do
 		return erb :visit
 	end
 
-	@title = 'Good!'
-	@message = "<h2>Tfck you, you are confirmed epta!</h2>"
-	erb :message
+	c = Client.new
+	c.name = @username
+	c.phone = @phone
+	c.datestamp = @datetime
+	c.barber = @barber
+	c.color = @color
+	c.save
 
-	u = Client.new :name => @username
-	u.save if u.new_record?
-	p = Client.new :phone => @phone
-	p.save if u.new_record?
-	d = Client.new :datestamp => @datetime
-	d.save if u.new_record?
-	b = Client.new :barber => @barber
-	b.save if u.new_record?
-	c = Client.new :color => @color
-	c.save if u.new_record?
+	erb "<h2>Thank you, we are waiting for you!</h2>"
 end
