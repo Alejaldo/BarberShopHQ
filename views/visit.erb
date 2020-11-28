@@ -12,22 +12,22 @@ $( function() {
   
     <div class="form-group">
       <label>Your name</label>
-      <input id="bbb" name="username" type="text" class="form-control" placeholder="Your name" value="<%=@username%>">
+      <input id="bbb" name="client[name]" type="text" class="form-control" placeholder="Your name" value="">
     </div>
 
     <div class="form-group">
     <label>Your phone</label>
-    <input name="phone" type="text" class="form-control ccc" placeholder="Your phone" value="<%=@phone%>">
+    <input name="client[phone]" type="text" class="form-control ccc" placeholder="Your phone" value="">
     </div>
 
     <div class="form-group">
       <label>Your date and time</label>
-      <input id="datetimepicker" name="datetime" type="text" class="form-control ccc" placeholder="Your date" value="<%=@datetime%>">
+      <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control ccc" placeholder="Your date" value="">
     </div>
     
     <div class="form-group">
       <label>Your barber</label>
-      <select name="barber" class="form-control">
+      <select name="client[barber]" class="form-control">
 
         <% @barbers.each do |item| %>
           <option <%= @barber == item.name %>><%= item.name %></option>
@@ -38,7 +38,7 @@ $( function() {
     
     <div class="form-group">
       <label>Your color of nation: </label>
-      <select name="color" id="qqq">
+      <select name="client[color]" id="qqq">
         <option value="#7bd148">Green</option>
         <option value="#5484ed">Bold blue</option>
         <option value="#a4bdfc">Blue</option>

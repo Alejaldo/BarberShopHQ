@@ -25,6 +25,8 @@ get '/visit' do
 end
 
 post '/visit' do
+	c = Client.new params[:client]
+=begin
 	@username = params[:username]
 	@phone = params[:phone]
 	@datetime = params[:datetime]
@@ -49,6 +51,7 @@ post '/visit' do
 	c.datestamp = @datetime
 	c.barber = @barber
 	c.color = @color
+=end
 	c.save
 
 	erb "<h2>Thank you, we are waiting for you!</h2>"
